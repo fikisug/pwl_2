@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
-    public function about() {
-        return 'Fiki Suganda & 2141720111';
+    public function index() {
+        return view('contact-us');
     }
 }
