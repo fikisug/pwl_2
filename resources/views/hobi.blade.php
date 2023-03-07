@@ -45,7 +45,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach ($kendaraan as $no =>$m)
+            @foreach ($hobi as $no =>$m)
             <tr>
               <td>{{$no}}</td>
               <td>{{$m->hobi}}</td>

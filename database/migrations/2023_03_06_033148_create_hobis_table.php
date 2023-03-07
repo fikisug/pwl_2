@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('hobi', function (Blueprint $table) {
             $table->id();
             $table->string('hobi', 30);
+            $table->string('desc', 30);
             $table->timestamps();
         });
     }

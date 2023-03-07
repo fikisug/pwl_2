@@ -60,7 +60,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{url('/dashboard')}}" class="nav-link">
+            <a href="{{url('/hobi')}}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Hobi
