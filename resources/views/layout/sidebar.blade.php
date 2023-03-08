@@ -67,7 +67,7 @@
               </p>
             </a>
           <li class="nav-item">
-            <a href="{{url('/profile')}}" class="nav-link">
+            <a href="{{url('/keluarga')}}" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Keluarga
@@ -75,7 +75,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('/kuliah')}}" class="nav-link">
+            <a href="{{url('/matakuliah')}}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 MataKuliah
