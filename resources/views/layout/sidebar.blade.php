@@ -82,6 +82,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{url('/mahasiswa')}}" class="nav-link">
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                Mahasiswa
+              </p>
+            </a>
+          </li>
           
         </ul>
       </nav>

@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\KuliahController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
@@ -104,10 +105,11 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/hobi', [HobiController::class, 'index']);
     Route::get('/keluarga', [KeluargaController::class, 'index']);
     Route::get('/matakuliah', [MatakuliahController::class, 'index']);
+    Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa', 'id');
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
 
-Route::get('/login', [LoginController::class, 'showLoginForm']);
+Route::get('/', [LoginController::class, 'showLoginForm']);
 
 
