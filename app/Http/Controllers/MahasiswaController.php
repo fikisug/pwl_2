@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\HobiModel;
 use App\Models\Mahasiswa;
+use App\Models\Mahasiswa_Matkul;
 use App\Models\MahasiswaModel;
+use App\Models\MatakuliahModel;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MahasiswaController extends Controller
 {
@@ -68,9 +71,13 @@ class MahasiswaController extends Controller
      * @param  \App\Models\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function show(MahasiswaModel $mahasiswa)
+    public function show($id)
     {
-        //
+        $mhs = MahasiswaModel::with('prodi')->get()->where('id', $id)->first();
+        $mk = Mahasiswa_Matkul::all()->where('mahasiswa_id', $id);
+        return view('mahasiswa.nilai_mahasiswa')
+                    ->with('mk', $mk)
+                    ->with('mhs', $mhs);
     }
 
     /**

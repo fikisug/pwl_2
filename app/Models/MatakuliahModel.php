@@ -10,6 +10,4 @@ class MatakuliahModel extends Model
     use HasFactory;
 
     public $table = 'matakuliah';
-    protected $primaryKey = 'kode';
-    protected $keyType = 'string';
 }
