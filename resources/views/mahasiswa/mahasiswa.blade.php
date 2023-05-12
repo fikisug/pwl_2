@@ -43,6 +43,8 @@
               <th>No</th>
               <th>Nim</th>
               <th>Nama</th>
+              <th>Prodi</th>
+              <th>Hobi</th>
               <th>Jk</th>
               <th>Hp</th>
               <th>Action</th>
@@ -55,6 +57,14 @@
                     <td>{{++$i}}</td>
                     <td>{{$m->nim}}</td>
                     <td>{{$m->nama}}</td>
+                    <td>{{$m->prodi->nama_prodi}}</td>
+                    <td>
+                      @foreach ($hb as $i =>$h)
+                        @if ($m->id == $h->mahasiswa_id)
+                        {{$h->hobi}}
+                        @endif
+                      @endforeach
+                    </td>
                     <td>{{$m->jk}}</td>
                     <td>{{$m->hp}}</td>
                     <td>

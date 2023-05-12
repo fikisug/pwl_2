@@ -53,6 +53,28 @@
             @enderror
           </div>
           <div class="form-group">
+            <label>Prodi</label>
+            <select name="prodi_id" id="" class="form-control">
+              @foreach($prodi as $p)
+                <option value="{{$p->id}}"
+                  @if (isset($mhs->prodi_id) == $p->id)
+                  selected
+                  @endif>{{$p->nama_prodi}}
+                </option>
+              @endforeach
+            </select>
+            @error('nama')
+              <span class="error invalid-feedback">{{ $message }} </span>
+            @enderror
+          </div>
+          <div class="form-group">
+            <label>Hobi</label>
+            <input type="text" id="hobi" name="hobi" multiple>
+            @error('jk')
+              <span class="error invalid-feedback">{{ $message }} </span>
+            @enderror
+          </div>
+          <div class="form-group">
             <label>JK</label>
             <input class="form-control @error('jk') is-invalid @enderror" value="{{ isset($mhs)? $mhs->jk : old('jk') }}" name="jk" type="text"/>
             @error('jk')

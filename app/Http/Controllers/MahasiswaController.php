@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HobiModel;
 use App\Models\Mahasiswa;
 use App\Models\MahasiswaModel;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -16,7 +18,9 @@ class MahasiswaController extends Controller
     public function index()
     {
         $mhs = MahasiswaModel::all();
+        $hb = HobiModel::all();
         return view('mahasiswa.mahasiswa')
+                    ->with('hb', $hb)
                     ->with('mhs', $mhs);
     }
 
@@ -27,7 +31,9 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
+        $prodi = Prodi::all();
         return view('mahasiswa.create_mahasiswa')
+            ->with('prodi', $prodi)
             ->with('url_form', url('/mahasiswa'));
     }
 
@@ -42,6 +48,7 @@ class MahasiswaController extends Controller
         $request->validate([
             'nim' => 'required|string|max:10|unique:mahasiswa,nim',
             'nama' => 'required|string|max:50',
+            'prodi_id' => 'required',
             'jk' => 'required|in:l,p',
             'tempat_lahir' => 'required|string|max:50',
             'tanggal_lahir' => 'required|date',
@@ -74,8 +81,10 @@ class MahasiswaController extends Controller
      */
     public function edit($id)
     {
+        $prodi = Prodi::all();
         $mhs = MahasiswaModel::find($id);
         return view('mahasiswa.create_mahasiswa')
+            ->with('prodi', $prodi)
             ->with('mhs', $mhs)
             ->with('url_form',url('/mahasiswa/'.$id));
     }
@@ -96,7 +105,8 @@ class MahasiswaController extends Controller
             'tempat_lahir' => 'required|string|max:10',
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string|max:255',
-            'hp' => 'required|digits_between:6,15'
+            'hp' => 'required|digits_between:6,15',
+            'prodi_id' => 'required'
         ]);
 
         MahasiswaModel::where('id','=', $id)->update($request->except(['_token', '_method']));

@@ -1,56 +1,99 @@
-<aside class="main-sidebar sidebar-light-primary elevation-4">
-  <!-- Brand Logo -->
-  <a href="#" class="brand-link bg-primary">
-    <img src="https://i.pinimg.com/736x/c1/e2/81/c1e2818612a947ac94ef7b6aff3f8ece.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">PWL_UTS</span>
-  </a>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="../../index3.html" class="brand-link">
+      <img src="{{ asset('assets/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    </a>
 
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
-        <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{{ asset('assets/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Alexander Pierce</a>
+        </div>
       </div>
-      <div class="info">
-        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
       </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="{{url('/dashboard')}}" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          <li class="nav-item">
+            <a href="{{url('/profile')}}" class="nav-link">
+              <i class="nav-icon far fa-image"></i>
+              <p>
+                Profile
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{url('/kuliah')}}" class="nav-link">
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                Kuliah
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{url('/hobi')}}" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Hobi
+              </p>
+            </a>
+          <li class="nav-item">
+            <a href="{{url('/keluarga')}}" class="nav-link">
+              <i class="nav-icon far fa-image"></i>
+              <p>
+                Keluarga
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{url('/matakuliah')}}" class="nav-link">
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                MataKuliah
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{url('/mahasiswa')}}" class="nav-link">
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                Mahasiswa
+              </p>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
     </div>
-
-    <!-- Sidebar Menu -->
-    <nav class="mt-2">
-      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-             with font-awesome or any other icon font library -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="fas fa-utensils pr-3"></i>
-            <p>
-              Menu
-              <i class="fas fa-angle-left right"></i>
-              <span class="badge badge-danger right">New</span>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="{{ url('/food') }}" class="nav-link">
-                <i class="fas fa-hamburger pr-3"></i>
-                <p>Food</p>
-                <span class="badge badge-info right">{{ $countFood }}</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ url('/drink') }}" class="nav-link">
-                <i class="fas fa-cocktail pr-3"></i>
-                <p>Drink</p>
-                <span class="badge badge-info right">{{ $countDrink }}</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-    <!-- /.sidebar-menu -->
-  </div>
-  <!-- /.sidebar -->
-</aside>
+    <!-- /.sidebar -->
+  </aside>

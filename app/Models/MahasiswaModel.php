@@ -16,6 +16,11 @@ class MahasiswaModel extends Model
         'tempat_lahir',
         'tanggal_lahir',
         'alamat',
-        'hp'
+        'hp',
+        'prodi_id'
     ];
+
+    public function prodi(){
+        return $this->belongsTo(Prodi::class);
+    }
 }
