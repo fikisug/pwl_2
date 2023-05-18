@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="card-body">
-        <form method="POST" action="{{ $url_form }}">
+        <form method="POST" action="{{ $url_form }}" enctype="multipart/form-data">
           @csrf
           {!! (isset($mhs))? method_field('PUT') : '' !!}
           <div class="form-group">
@@ -67,13 +67,13 @@
               <span class="error invalid-feedback">{{ $message }} </span>
             @enderror
           </div>
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label>Hobi</label>
             <input type="text" id="hobi" name="hobi" multiple>
             @error('jk')
               <span class="error invalid-feedback">{{ $message }} </span>
             @enderror
-          </div>
+          </div> --}}
           <div class="form-group">
             <label>JK</label>
             <input class="form-control @error('jk') is-invalid @enderror" value="{{ isset($mhs)? $mhs->jk : old('jk') }}" name="jk" type="text"/>
@@ -106,6 +106,13 @@
             <label>alamat</label>
             <input class="form-control @error('alamat') is-invalid @enderror" value="{{ isset($mhs)? $mhs->alamat : old('alamat') }}" name="alamat" type="text"/>
             @error('alamat')
+              <span class="error invalid-feedback">{{ $message }} </span>
+            @enderror
+          </div>
+          <div class="form-group">
+            <label>Foto</label>
+            <input class="form-control @error('foto') is-invalid @enderror" value="{{ isset($mhs)? $mhs->foto : old('foto') }}" name="foto" type="file"/>
+            @error('foto')
               <span class="error invalid-feedback">{{ $message }} </span>
             @enderror
           </div>

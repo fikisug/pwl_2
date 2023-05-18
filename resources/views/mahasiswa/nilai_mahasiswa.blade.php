@@ -67,6 +67,7 @@
               
             </tfoot>
           </table>
+          <a href="{{url('/mahasiswa/'. $mhs->id.'/print-pdf')}}" class="btn btn-sm btn-primary">Cetak PDF</a>
         </div>
       </div>
       <!-- /.card-body -->

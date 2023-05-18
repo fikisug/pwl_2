@@ -106,6 +106,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/hobi', [HobiController::class, 'index']);
     Route::get('/keluarga', [KeluargaController::class, 'index']);
     Route::get('/matakuliah', [MatakuliahController::class, 'index']);
+    Route::get('/mahasiswa/{id}/pdf', [MahasiswaController::class, 'pdf']);
+    Route::get('/mahasiswa/{id}/print-pdf', [MahasiswaController::class, 'print_pdf'])->name('print.nilai_mahasiswa');
     Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa', 'id');
     Route::get('/articles/cetak_pdf', [ArticleController::class, 'cetak_pdf']);
     Route::resource('/articles', ArticleController::class);

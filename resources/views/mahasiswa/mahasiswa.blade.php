@@ -43,6 +43,7 @@
               <th>No</th>
               <th>Nim</th>
               <th>Nama</th>
+              <th>Foto</th>
               <th>Prodi</th>
               <th>Hobi</th>
               <th>Jk</th>
@@ -57,6 +58,9 @@
                     <td>{{++$i}}</td>
                     <td>{{$m->nim}}</td>
                     <td>{{$m->nama}}</td>
+                    <td>
+                      <img src="storage/{{$m->foto}}" alt="" width="100px">
+                    </td>
                     <td>{{$m->prodi->nama_prodi}}</td>
                     <td>
                       @foreach ($hb as $i =>$h)
