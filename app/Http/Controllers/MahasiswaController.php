@@ -12,6 +12,8 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Yajra\DataTables\Facades\DataTables;
 
 class MahasiswaController extends Controller
 {
@@ -22,11 +24,14 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mhs = MahasiswaModel::all();
-        $hb = HobiModel::all();
-        return view('mahasiswa.mahasiswa')
-                    ->with('hb', $hb)
-                    ->with('mhs', $mhs);
+        return view('mahasiswa.mahasiswa');
+    }
+
+    public function data(){
+        $data = MahasiswaModel::selectRaw('id, nim, nama, hp');
+        return DataTables::of($data)
+            ->addIndexColumn()
+            ->make(true);
     }
 
     /**
@@ -48,7 +53,7 @@ class MahasiswaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store_lama(Request $request)
     {
         $request->validate([
             'nim' => 'required|string|max:10|unique:mahasiswa,nim',
@@ -59,7 +64,7 @@ class MahasiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string|max:255',
             'hp' => 'required|digits_between:6,15',
-            'foto' => 'required'
+            'foto' => ''
         ]);
 
         if($request->file('foto')){
@@ -82,6 +87,32 @@ class MahasiswaController extends Controller
         //jika data berhasil ditambahkan
         return redirect('mahasiswa')
             ->with('success', 'Mahasiswa Berhasil Ditambahkan');
+    }
+
+    public function store(Request $request)
+    {
+        $rule = [
+            'nim' => 'required|string|max:10|unique:mahasiswa,nim',
+            'nama' => 'required|string|max:50',
+            'hp' => 'required|digits_between:6,15',
+        ];
+
+        $validator = Validator::make($request->all(), $rule);
+        if($validator->fails()){
+            return response()->json([
+                'status' => false,
+                'message' => 'Data gagal ditambahkan. ' .$validator->errors()->first(),
+                'data' => $validator->errors()
+            ]);
+        }
+
+        $mhs = MahasiswaModel::create($request->all());
+        return response()->json([
+            'status' => ($mhs),
+            'modal_close' => false,
+            'message' => ($mhs)? 'Data berhasil ditambahkan' : 'Data gagal ditambahkan',
+            'data' => null
+        ]);
     }
 
     /**
